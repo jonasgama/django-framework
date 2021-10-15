@@ -3,5 +3,5 @@ from django.contrib import admin
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
-    path('contacts/', include('contacts.urls'))
+    path('v1/', include('contacts.urls'))
 ]
