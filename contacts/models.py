@@ -20,7 +20,7 @@ class Contact(models.Model):
     update_date = models.DateTimeField(auto_now=True)
     enable = models.BooleanField(default=True)
     rate = models.DecimalField(max_digits=2, decimal_places=1)
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Category, related_name="contacts", on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name = 'Contact'

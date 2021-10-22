@@ -2,14 +2,6 @@ from rest_framework import serializers
 from .models import Category, Contact
 
 
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = (
-            'name',
-        )
-
-
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         extra_kwargs = {
@@ -26,4 +18,15 @@ class ContactSerializer(serializers.ModelSerializer):
             'enable',
             'rate',
             'category'
+        )
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    contacts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+
+    class Meta:
+        model = Category
+        fields = (
+            'name',
+            'contacts'
         )
