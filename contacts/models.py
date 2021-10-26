@@ -10,6 +10,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ['name']
+
 
 class Contact(models.Model):
     name = models.CharField(max_length=255)
@@ -26,6 +29,7 @@ class Contact(models.Model):
         verbose_name = 'Contact'
         verbose_name_plural = 'Contacts'
         unique_together = ['name', 'category']
+        ordering = ['-name']
 
     def __str__(self):
         return f'contact {self.name}/{self.category} rated as {self.rate}'
